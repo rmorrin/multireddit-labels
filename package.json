@@ -1,0 +1,12 @@
+{
+  "name": "multireddit-labels",
+  "version": "0.0.0",
+  "description": "Chrome extension that adds coloured labels to included subreddits when viewing a multireddit",
+  "author": "Ryan Morrin",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.0",
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}

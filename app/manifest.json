@@ -1,0 +1,12 @@
+{
+    "manifest_version": 2,
+    "name": "Multireddit Labels",
+    "description": "Adds coloured labels to included subreddits when viewing a multireddit",
+    "version": "0.0",
+    "content_scripts": [
+        {
+            "matches": ["*://*.reddit.com/*/m/*"],
+            "js": ["jquery.js", "script.js"]
+        }
+    ]
+}
