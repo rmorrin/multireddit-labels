@@ -104,7 +104,7 @@
 
     $el.css({
       'background': 'rgba(' + subredditColour.join(',') + ')',
-      'color': '#000',
+      'color': '#555',
     });
   }
 
