@@ -2,9 +2,7 @@
 
 (function ($) {
 
-  var $subreddits,
-      $entryLinks,
-      colours = [],
+  var colours   = [],
       colourMap = [];
 
   function getUnusedColour() {
@@ -108,9 +106,11 @@
     });
   }
 
-  $(function () {
-    $subreddits = $('.multi-details .subreddits li a');
-    $entryLinks = $('.entry .tagline .subreddit');
+  function initLabelColours() {
+    // subreddits included in multireddit
+    var $subreddits = $('.multi-details .subreddits li a');
+
+    // calculate unique colours for subreddits
     colours = distinctColours($subreddits.length);
 
     $subreddits.each(function () {
@@ -123,8 +123,12 @@
 
       applyColour($el, subredditColour);
     });
+  }
 
-    $entryLinks.each(function () {
+  function applyEntryLabels() {
+    var $siteTable = $('.sitetable:not(.haslabels)');
+
+    $siteTable.find('.entry .tagline .subreddit').each(function () {
       var $el = $(this);
 
       // get chosen colour for the current subreddit
@@ -135,6 +139,15 @@
       applyColour($el, subredditColour[0].colour);
     });
 
+    $siteTable.addClass('haslabels');
+  }
+
+  $(function () {
+    initLabelColours();
+    applyEntryLabels();
+
+    // hook into never ending reddit provided by RES
+    $(window).on('neverEndingLoad', applyEntryLabels);
   });
 
 
